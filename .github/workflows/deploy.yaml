@@ -10,13 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
-      - run: docker build -t rallycoding/react-test-up -f ./client/Dockerfile.dev ./client
+      - run: docker build -t ronech/react-test-up -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true rallycoding/react-test-up npm test
 
-      - run: docker build -t rallycoding/multi-client-up ./client
-      - run: docker build -t rallycoding/multi-nginx-up ./nginx
-      - run: docker build -t rallycoding/multi-server-up ./server
-      - run: docker build -t rallycoding/multi-worker-up ./worker
+      - run: docker build -t ronech/multi-client-up ./client
+      - run: docker build -t ronech/multi-nginx-up ./nginx
+      - run: docker build -t ronech/multi-server-up ./server
+      - run: docker build -t ronech/multi-worker-up ./worker
 
       - run: docker push ronech/multi-client-up
       - run: docker push ronech/multi-nginx-up
