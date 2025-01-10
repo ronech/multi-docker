@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
       - run: docker build -t ronech/react-test-up -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true rallycoding/react-test-up npm test
+      - run: docker run -e CI=true ronech/react-test-up npm test
 
       - run: docker build -t ronech/multi-client-up ./client
       - run: docker build -t ronech/multi-nginx-up ./nginx
