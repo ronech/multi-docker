@@ -18,10 +18,10 @@ jobs:
       - run: docker build -t rallycoding/multi-server-up ./server
       - run: docker build -t rallycoding/multi-worker-up ./worker
 
-      - run: docker push rallycoding/multi-client-up
-      - run: docker push rallycoding/multi-nginx-up
-      - run: docker push rallycoding/multi-server-up
-      - run: docker push rallycoding/multi-worker-up
+      - run: docker push ronech/multi-client-up
+      - run: docker push ronech/multi-nginx-up
+      - run: docker push ronech/multi-server-up
+      - run: docker push ronech/multi-worker-up
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
