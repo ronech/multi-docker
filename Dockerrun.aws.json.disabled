@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "ronech/multi-client-up",
+      "hostname": "client",
+      "essential": false,
+    },
+    {
+      "name": "server",
+      "image": "ronech/multi-server-up",
+      "hostname": "api",
+      "essential": false,
+    },
+    {
+      "name": "worker",
+      "image": "ronech/multi-worker-up",
+      "hostname": "worker",
+      "essential": false,
+    },
+    {
+      "name": "nginx",
+      "image": "ronech/multi-nginx-up",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80,
+        }
+      ],
+      "links": ["client", "server"]
+    },
+  ]
+}
